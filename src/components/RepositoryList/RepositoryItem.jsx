@@ -1,11 +1,12 @@
-export function RepositoryItem() {
-    return(
+export function RepositoryItem(props) {
+    return (
         <li>
-        <strong>Name</strong>
-        <p>Form in</p>
-        <a href="{}">
-            Acessar Link
-        </a>
-    </li>
+            <strong>{props?.data?.name ?? 'Default'}</strong>
+            <p>{props.data?.description || 'No description'}</p>
+            <a href={props.data?.link || '#'}>
+                Acessar Link
+            </a>
+        </li>
     );
+     
 }
