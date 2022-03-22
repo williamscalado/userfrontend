@@ -1,23 +1,37 @@
 import { RepositoryItem } from "./RepositoryItem";
-
-const RepositoryDTO = {
-    name: "Williams Calado",
-    description: "React",
-    link: "www.google.com.br"
-}
+import { useEffect, useState } from "react";
+import react from "react";
+//SCSS
+import '../../style/reposittory.scss'
 
 
 export function RepositoryList() {
-    return (
-        <section className="repository-list">
-            <h1>List</h1>
-            <ul>
-                <RepositoryItem data={RepositoryDTO} />
-                <RepositoryItem data={RepositoryDTO} />
-                <RepositoryItem data={RepositoryDTO} />
-                <RepositoryItem data={RepositoryDTO} />
-            </ul>
+    let [RepositoryDTO, setRepositoryDTO] = useState([])
 
-        </section>
+    useEffect(() => {
+        window            
+        fetch(process.env.APIGIT)
+            .then(Response => Response.json())
+            .then(
+                (data) => {
+                    setRepositoryDTO(data)
+                    console.log(data)
+            }
+            )
+    }, [])
+
+ 
+    return (
+        <div className="conteiner-repository-list">
+            <section className="repository-list">
+                <h1>List of Repository</h1>
+                <ul>
+                    {RepositoryDTO.map(rep => <RepositoryItem key={rep.name} data={rep} /> )}
+                                      
+                </ul>
+                
+                <button >teste</button>
+            </section>
+        </div>
     );
 }

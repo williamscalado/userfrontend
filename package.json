@@ -21,6 +21,7 @@
     "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.0",
     "html-webpack-plugin": "^5.5.0",
     "node-sass": "^7.0.1",
     "react-refresh": "^0.11.0",
