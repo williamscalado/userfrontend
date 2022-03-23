@@ -7,13 +7,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
-    entry: path.resolve(__dirname, 'src', 'index.jsx'),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     resolve: {
-        extensions : ['.js','.jsx']
+        extensions : ['.js','.jsx', '.ts', '.tsx']
     },
     devServer: {
         
@@ -31,13 +31,13 @@ module.exports = {
         rules: [
 
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|tsx)$/,
                 exclude: /node_modules/,
                 use: [{
                     loader: 'babel-loader',
                     options: {
                         plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
-                        presets: ["@babel/preset-env",
+                        presets: ["@babel/preset-env","@babel/preset-typescript",
                             ["@babel/preset-react", {
                                 runtime: 'automatic'
                             }]
