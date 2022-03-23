@@ -8,7 +8,7 @@ import '../../style/reposittory.scss'
 
 export function RepositoryList() {
 
-    let [RepositoryDTO, setRepositoryDTO] = useState([])
+    let [RepositoryDTO, setRepositoryDTO] = useState<Repository[]>([])
 
     useEffect(() => {
         window
@@ -30,7 +30,7 @@ export function RepositoryList() {
                 <ul>
                     {RepositoryDTO.map(
                         (rep) => { 
-                            const dataRep: Repository = rep
+                            const dataRep = rep
                             return <RepositoryItem key={dataRep.name}  data={dataRep} />
                     })}
 
